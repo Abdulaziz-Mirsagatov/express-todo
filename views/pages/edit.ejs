@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Edit Task</h1>
+        </header>
+
+        <main>
+            <a href="/"><button class="back-button"><i class="fa fa-arrow-left"></i>Back</button></a>
+            <form action="<%- "/edit/" + task._id %>"  method="post">
+                <input type="text" name="name" placeholder="task name..." autocomplete="off" required value="<%= task.name %>"  >
+                <div class="container"><input type="checkbox" name="completed" <%= task.completed ? "checked" : "" %> ><label for="completed">Mark as completed</label></div>
+                <input type="submit" value="Save">
+            </form>
+        </main>
+    </div>
+
+    <%- include("../partials/fa") %>
+</body>
+</html>

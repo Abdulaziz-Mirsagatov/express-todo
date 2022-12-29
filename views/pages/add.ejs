@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="css/add.css">
+</head>
+<body>
+    <% if(message.length) { %>
+        <%- include("../partials/flash-message", {message}) %> 
+    <% } %> 
+
+    <div class="wrapper">
+        <header>
+            <h1>Add New Task</h1>
+        </header>
+
+        <main>
+            <a href="/"><button class="back-button"><i class="fa fa-arrow-left"></i> Back</button></a>
+            <form action="/add" method="post">
+                <input type="text" name="name" placeholder="task name..." autocomplete="off" required>
+                <input type="submit" value="Add">
+            </form>
+        </main>
+    </div>
+
+    <%- include("../partials/fa") %>
+</body>
+</html>

@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    font-family: 'Ubuntu', sans-serif;  
+}
+
+header h1{
+    margin: 1em;
+    text-align: center;
+    color: #408af1;
+    font-size: 4em;
+    font-family: 'Fredoka One', cursive;
+}
+
+main{
+    width: min(90%, 1080px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .add-button{
+    margin-bottom: 1em;
+}
+
+main .add-button button{
+    padding: 0.5em 2em;
+    background-color: #408af1;
+    border-radius: 5px;
+    font-size: 1.5em;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    font-family: 'Ubuntu', sans-serif; 
+    transition: background-color 0.3s;
+}
+
+main .add-button button:hover{
+    background-color: #006aff;
+}
+
+main .grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1vw;
+    width: 100%;
+}
+
+main .task-container{
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 0 5px;
+}
+
+main .task-container h2{
+    color:#408af1;
+    font-size: 1.6em;
+}
+
+main .task-container .button-container{
+    margin-top: 0.5em;
+}
+
+main .task-container .button-container button{
+    padding: 0.2em 0.5em;
+    background-color: #fff;
+    border-radius: 3px;
+    font-size: 1em;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    font-family: 'Ubuntu', sans-serif;  
+    transition: background-color 0.3s;
+}
+
+main .task-container .button-container a:nth-child(1) button{
+    background-color: #408af1;
+}
+
+main .task-container .button-container a:nth-child(1) button:hover{
+    background-color: #006aff;
+}
+
+main .task-container .button-container a:nth-child(2) button{
+    background-color: red;
+}
+
+main .task-container .button-container a:nth-child(2) button:hover{
+    background-color: #ca0202;
+}
+
+.message{
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-30%);
+    padding: 1em;
+    background-color: #30e130;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #30e130;
+    font-family: 'Ubuntu', sans-serif;
+    animation: message-animation 0.5s forwards;
+    opacity: 0%;
+}
+
+@keyframes message-animation {
+    100%{
+        opacity: 100%;
+        transform: translateX(-50%) translateY(0%);
+    }
+}

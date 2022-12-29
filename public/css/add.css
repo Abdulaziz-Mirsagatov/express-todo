@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    font-family: 'Ubuntu', sans-serif;  
+}
+
+header h1{
+    margin: 1em;
+    text-align: center;
+    color: #408af1;
+    font-size: 4em;
+    font-family: 'Fredoka One', cursive;
+}
+
+main{
+    width: min(90%, 1080px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .back-button{
+    position: absolute;
+    top: 0.2em;
+    left: 0.2em;
+    padding: 0.2em 0;
+    width: 5em;
+    border-radius: 5px;
+    font-size: 1.8em;
+    background-color: #408af1;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;  
+    transition: background-color 0.3s;
+}
+
+main .back-button:hover{
+    background-color: #006aff;
+}
+
+main form{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 1em;   
+}
+
+main form input[type="text"]{
+    padding: 0.4em 0.5em;
+    border-radius: 5px;
+    font-size: 1.5em;
+    text-align: center;
+    box-shadow: 0 0 5px black;
+    border: none;
+    outline: none;
+    font-family: 'Ubuntu', sans-serif;  
+}   
+
+main form input[type="submit"]{
+    padding: 0.2em 0;
+    width: 60%;
+    border-radius: 5px;
+    font-size: 1.8em;
+    background-color: #408af1;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;  
+    transition: background-color 0.3s;
+}
+
+main form input[type="submit"]:hover{
+    background-color: #006aff;
+}
+
+.message{
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-30%);
+    padding: 1em;
+    background-color: red;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px red;
+    font-family: 'Ubuntu', sans-serif;
+    animation: message-animation 0.5s forwards;
+    opacity: 0%;
+}
+
+@keyframes message-animation {
+    100%{
+        opacity: 100%;
+        transform: translateX(-50%) translateY(0%);
+    }
+}
