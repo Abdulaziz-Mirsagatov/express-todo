@@ -5,7 +5,7 @@ const Task = mongoose.model('Task', new mongoose.Schema({
         type: String,
         required: true,
         minlength: 3,
-        maxlength: 255
+        maxlength: 50
     },
     date: {
         type: Date,

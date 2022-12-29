@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="/css/edit.css">
 </head>
 <body>
+    <% if(message.length) { %>
+        <%- include("../partials/flash-message", {message}) %> 
+    <% } %> 
+
     <div class="wrapper">
         <header>
             <h1>Edit Task</h1>

@@ -91,3 +91,25 @@ main form input[type="submit"]{
 main form input[type="submit"]:hover{
     background-color: #006aff;
 }
+
+.message{
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-30%);
+    padding: 1em;
+    background-color: red;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px red;
+    font-family: 'Ubuntu', sans-serif;
+    animation: message-animation 0.5s forwards;
+    opacity: 0%;
+}
+
+@keyframes message-animation {
+    100%{
+        opacity: 100%;
+        transform: translateX(-50%) translateY(0%);
+    }
+}

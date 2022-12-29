@@ -16,12 +16,19 @@ router.post('/', async (req, res) => {
         res.redirect('/add');
     }
     else{
-        task = new Task({ name: req.body.name });
-        await task.save();
+        try {
+            task = new Task({ name: req.body.name });
+            await task.save();
 
-        req.flash('message', 'Task added');
-        
-        res.redirect("/");
+            req.flash('message', 'Task added!');
+
+            res.redirect('/');
+        }
+        catch(ex){
+            req.flash('message', 'Invalid task name');
+
+            res.redirect('/add');
+        }
     }
 })
 
