@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <div class="wrapper">
+        <% if(message.length) { %>
+            <%- include("../partials/flash-message", {message}) %> 
+        <% } %> 
+
+        <header>
+            <h1>Register</h1>
+        </header>
+
+        <main>
+            <form action="/register" method="post">
+                <input type="text" name="username" placeholder="username" autocomplete="off" required>
+                <input type="email" name="email" placeholder="email" autocomplete="off" required>
+                <input type="password" name="password" placeholder="password" autocomplete="off" required>
+                <input type="submit" value="Register">
+            </form>
+            <small>Already have an account? <a href="/login">Login</a> </small>
+        </main>
+    </div>
+</body>
+</html>

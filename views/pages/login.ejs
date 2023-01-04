@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="wrapper">
+        <% if(message.length) { %>
+            <%- include("../partials/flash-message", {message}) %> 
+        <% } %> 
+
+        <header>
+            <h1>Login</h1>
+        </header>
+
+        <main>
+            <form action="/login" method="post">
+                <input type="email" name="email" placeholder="email" autocomplete="off" required>
+                <input type="password" name="password" placeholder="password" autocomplete="off" required>
+                <input type="submit" value="Login">
+            </form>
+            <small>Do not have an account? <a href="/register">Register</a> </small>
+        </main>
+    </div>
+</body>
+</html>

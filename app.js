@@ -25,6 +25,8 @@ app.use(flash());
 app.use('/', require('./routes/index'));
 app.use('/add', require('./routes/add'));
 app.use('/edit', require('./routes/edit'));
+app.use('/register', require('./routes/register'));
+app.use('/login', require('./routes/login'));
 
 const PORT = process.env.PORT || 5000;
 
