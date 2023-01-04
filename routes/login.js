@@ -4,11 +4,13 @@ const {User} = require('../models/user');
 const router = express.Router();
 
 router.get('/', (req, res) => {
+    if (req.session.userId) return res.redirect('/');
+
     res.render('pages/login', {message: req.flash('message')});
 });
 
 router.post('/', async (req, res) => {
-    const user = await User.findOne({email: req.body.email});
+    const user = await User.findOne({ email: req.body.email });
     if (!user || user.password !== req.body.password) {
         req.flash('message', 'Incorrect email or password');
         res.redirect('/login');

@@ -24,7 +24,8 @@ const userSchema = mongoose.Schema({
     },
     tasks: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Task'
+        ref: 'Task',
+        default: []
     }]
 });
 
@@ -37,7 +38,7 @@ const User = mongoose.model('User', userSchema);
 function validate(user) {
     const schema = Joi.object({
         username: Joi.string().min(3).max(30).required(),
-        email: Joi.string().min(5).max(50).email().required().unique(),
+        email: Joi.string().min(5).max(50).email().required(),
         password: Joi.string().min(6).max(20).required()
     });
     

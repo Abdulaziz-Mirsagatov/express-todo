@@ -4,7 +4,9 @@ const router = express.Router();
 const { User, validate } = require('../models/user');
 
 router.get('/', (req, res) => {
-    res.render('pages/register', {message: req.flash('message')});
+    if (req.session.userId) return res.redirect('/');
+
+    res.render('pages/register');
 });
 
 router.post('/', async (req, res) => {
@@ -14,12 +16,12 @@ router.post('/', async (req, res) => {
         password: req.body.password
     });
 
-    if(!isValid) return res.status(400).send('Validation failed');
+    if(!isValid) return res.redirect('/register');
 
     const user = new User({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password    
     });
     await user.save();
 

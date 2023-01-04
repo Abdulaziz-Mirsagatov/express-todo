@@ -13,5 +13,7 @@ module.exports = async (req, res, next) => {
     const user = await User.findById(_id);
     if (!user) return res.redirect('/login');
 
+    req.session.userId = _id;
+    
     next();
 };
