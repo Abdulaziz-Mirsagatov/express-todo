@@ -10,8 +10,9 @@ router.get('/', auth, async (req, res) => {
     const { userId } = req.session;
     const user = await User.findById(userId);
     const tasks = await Task.find({_id: {$in: user.tasks}});
+    const username = user.username;
     
-    res.render("pages/index", {tasks, message: req.flash('message')});
+    res.render("pages/index", {tasks, message: req.flash('message'), username});
 });
 
 module.exports = router;

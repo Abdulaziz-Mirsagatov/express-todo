@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const { User, validate } = require('../models/user');
+const bcrypt = require('bcrypt');
 
 router.get('/', (req, res) => {
     if (req.session.userId) return res.redirect('/');
@@ -18,10 +19,13 @@ router.post('/', async (req, res) => {
 
     if(!isValid) return res.redirect('/register');
 
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(req.body.password, salt);
+
     const user = new User({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password    
+        password: hash    
     });
     await user.save();
 
