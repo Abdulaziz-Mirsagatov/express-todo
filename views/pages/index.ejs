@@ -8,12 +8,13 @@
     <div class="wrapper">
         <% if(message.length) { %>
             <%- include("../partials/flash-message", {message}) %> 
-        <% } %> 
+        <% } %>
         
         <header>
             <h1>Todo List</h1>
         </header>
         <main>
+            <form action="/logout" method="post"> <input type="submit" value="Logout" class="logout-button"> </form>
             <div class="add-button"><a href="http://localhost:5000/add"><button>Add New Task</button></a></div>
             <div class="grid">
                 <% tasks.forEach(task => { %>

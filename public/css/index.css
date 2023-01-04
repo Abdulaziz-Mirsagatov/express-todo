@@ -27,6 +27,26 @@ main{
     align-items: center;
 }
 
+main .logout-button{
+    position: absolute;
+    top: 0.2em;
+    right: 0.2em;
+    padding: 0.2em 0;
+    width: 5em;
+    border-radius: 5px;
+    font-size: 1.8em;
+    background-color: #408af1;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;  
+    transition: background-color 0.3s;
+}
+
+main .logout-button:hover{
+    background-color: #006aff;
+}
+
 main .add-button{
     margin-bottom: 1em;
 }
