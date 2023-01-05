@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('./config/startup/db');
+const db = require('./startup/db');
 const sesion = require('express-session');
 const flash = require('connect-flash');
 
