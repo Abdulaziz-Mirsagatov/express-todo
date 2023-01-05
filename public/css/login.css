@@ -90,11 +90,46 @@ main small{
     font-family: 'Ubuntu', sans-serif;
     animation: message-animation 0.5s forwards;
     opacity: 0%;
+    z-index: 100;
 }
 
 @keyframes message-animation {
     100%{
         opacity: 100%;
         transform: translateX(-50%) translateY(0%);
+    }
+}
+
+@media (max-width: 480px) {
+    header h1{
+        margin-top: 3em;
+        font-size: 3em;
+    }
+
+    main{
+        height: 100%;
+    }
+    
+    main form input[type="email"]{
+        border-radius: 5px;
+        font-size: 1.2em;
+        text-align: center;
+        box-shadow: 0 0 2px black;
+        border: none;
+        outline: none;
+        font-family: 'Ubuntu', sans-serif;  
+    }
+
+    main form input[type="password"]{
+        font-size: 1.2em;
+        box-shadow: 0 0 2px black;
+    }   
+
+    main form input[type="submit"]{
+        font-size: 1.5em;
+    }
+
+    .message{
+        font-size: 0.8em;
     }
 }
