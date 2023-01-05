@@ -5,7 +5,7 @@ const Task = mongoose.model('Task', new mongoose.Schema({
         type: String,
         required: true,
         minlength: 3,
-        maxlength: 50
+        maxlength: 30
     },
     date: {
         type: Date,
@@ -17,4 +17,16 @@ const Task = mongoose.model('Task', new mongoose.Schema({
     }
 }));
 
-module.exports = Task;
+function validate(obj) {
+    const Joi = require('joi');
+    const schema = Joi.object({
+        name: Joi.string().min(3).max(30).required(),
+        date: Joi.date(),
+        completed: Joi.boolean()
+    });
+
+    return schema.validate(obj);
+};
+
+module.exports.Task = Task;
+module.exports.validate = validate;

@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
-const Task = require('../models/task');
-const { User } = require('../models/user'); 
+const {Task, validate} = require('../models/task');
+const {User} = require('../models/user'); 
 const auth = require('../middleware/auth');
 
 router.get('/:id', auth, async (req, res) => {
@@ -16,6 +16,12 @@ router.post('/:id', auth, async (req, res) => {
     const id = req.params.id;
     let task = await Task.findById(id);
 
+    const {error} = validate({name: req.body.name});
+    if (error) {
+        req.flash('message', error.details[0].message);
+        return res.redirect('/edit/' + id);
+    };
+
     try {
         task.name = req.body.name;
         task.completed = (req.body.completed === "on" ? true : false);
@@ -26,9 +32,7 @@ router.post('/:id', auth, async (req, res) => {
         res.redirect('/');
     }
     catch(ex){
-        req.flash('message', 'Invalid task name');
-
-        res.redirect('/edit/' + id);
+        res.status(500).send("Something went wrong");
     };
 });
 

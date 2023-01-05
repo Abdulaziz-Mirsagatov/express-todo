@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const Task = require('../models/task');
-const { User } = require('../models/user');
+const {Task} = require('../models/task');
+const {User} = require('../models/user');
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth');
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Task = require('../models/task');
-const { User } = require('../models/user');
+const {Task, validate} = require('../models/task');
+const {User} = require('../models/user');
 const flash = require('connect-flash');
 const router = express.Router();
 const auth = require('../middleware/auth');
@@ -15,9 +15,16 @@ router.post('/', auth, async (req, res) => {
     const user = await User.findById(userId);
     const tasks = await Task.find({_id: {$in: user.tasks}});
 
+    // checking for existance of task
     if (tasks.some( task => task.name === req.body.name)) {
         req.flash('message', 'Task already exists');
 
+        return res.redirect('/add');
+    };
+
+    const {error} = validate(req.body);
+    if (error) {
+        req.flash('message', error.details[0].message);
         return res.redirect('/add');
     };
 
@@ -33,9 +40,7 @@ router.post('/', auth, async (req, res) => {
         res.redirect('/');
     }
     catch(ex){
-        req.flash('message', 'Invalid task name');
-
-        res.redirect('/add');
+        res.status(500).send("Something went wrong");
     };
 })
 
