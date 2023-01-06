@@ -12,14 +12,23 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
-    if (!user || !bcrypt.compare(req.body.password, user.password)) {
+    console.log();
+    if (!user) {
         req.flash('message', 'Incorrect email or password');
         res.redirect('/login');
         return;
     };
 
-    req.session.token = user.genAuthToken();
-    res.redirect('/');
+    bcrypt.compare(req.body.password, user.password, (err, result) => {
+        if (!result) {
+            req.flash('message', 'Incorrect email or password');
+            return res.redirect('/login');
+        }
+        else{
+            req.session.token = user.genAuthToken();
+            return res.redirect('/');
+        }
+    })
 });
 
 module.exports = router;

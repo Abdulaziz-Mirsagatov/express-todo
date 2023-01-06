@@ -17,11 +17,17 @@ router.post('/', async (req, res) => {
         return res.redirect('/register');
     };
 
+    let user = await User.findOne({email: req.body.email});
+    if (user) {
+        req.flash('message', "User with this email is already registered");
+        return res.redirect('/register');
+    };
+
     const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(req.body.password, salt);
+    req.body.password = await bcrypt.hash(req.body.password, salt);
 
     try {
-        const user = new User(req.body);
+        user = new User(req.body);
         await user.save();
 
         const token = user.genAuthToken();
