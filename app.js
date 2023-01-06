@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(sesion({
-    secret: 'myTodoListSecretForSession',
+    secret: process.env.SESSION_SECRET,
     saveUninitialized: true,
     resave: true
 }));
